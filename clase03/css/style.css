@@ -1,0 +1,39 @@
+.titulo {
+   margin-top: 50px;
+   margin-right: 100px;
+   margin-bottom: 80px;
+   margin-left: 120px;
+}
+
+.colorTexto{
+    color: blue;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+}
+
+#parrafo {
+ border-top: 5px solid black;
+ border-right: 8px dashed black;
+ border-bottom: 12px dotted black;
+ border-left: 7px double black;
+
+ padding-top: 30px;
+ padding-right: 50px;
+ padding-bottom: 40px;
+ padding-left: 80px;
+}
+
+img{
+    width: 600px;
+    height: 300px;
+    border-top: 5px solid black;
+}
+
+.padre{
+    text-align: center;
+    background: rgb(187, 90, 90);
+}
+
+h2{
+    background: rgb(72, 154, 221);
+}
