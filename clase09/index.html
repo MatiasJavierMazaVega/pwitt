@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="./css/index.css">
+
+    <title>Funciones de JS</title>
+</head>
+<body>
+
+    <div class="container">
+        <hr>
+        <h1>Calculadora JS</h1>
+        <hr>
+        <div class="m-5">
+            <button onclick="iniciar()" class="btn btn-primary">Iniciar Cálculos</button>
+        </div>
+        <div class="m-5">
+            <button onclick="saludar()" class="btn btn-primary">Saludar</button>
+        </div>
+        <hr>
+
+        <button onclick="sumar()" class="btn btn-success m-3">Suma</button>
+        <button onclick="restar()" class="btn btn-success m-3">Resta</button>
+        <button onclick="multiplicar()" class="btn btn-success m-3">Multiplicacion</button>
+        <button onclick="dividir()" class="btn btn-success m-3">Division</button>
+
+        <hr>
+
+        <div class="m-3">
+            <h3 id="resultado">El resultado de la operación es: </h3>
+        </div>
+
+    </div>
+
+
+    
+ <script src="./js/index.js"></script>    
+</body>
+</html>
