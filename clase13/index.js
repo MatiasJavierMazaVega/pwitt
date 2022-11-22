@@ -41,7 +41,25 @@ conexion.connect((err) =>{
 
 //rutas de la aplicacion
 app.get('/', (req, res) =>{
-    res.send('Bienvenido a la App Completa')
+    res.render('index',  {
+        titulo: 'Título'
+    })
+})
+
+app.get('/formulario', (req, res) =>{
+    res.render('formulario')
+})
+
+app.get('/productos', (req, res) =>{
+    res.render('index',  {
+        titulo: 'Productos'
+    })
+})
+
+app.get('/contacto', (req, res) =>{
+    res.render('index',  {
+        titulo: 'Contacto'
+    })
 })
 
 //servidor a la escucha de las peticiones
