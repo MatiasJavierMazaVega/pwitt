@@ -51,16 +51,86 @@ app.get('/formulario', (req, res) =>{
 })
 
 app.get('/productos', (req, res) =>{
-    res.render('index',  {
+    res.render('productos',  {
         titulo: 'Productos'
     })
 })
 
 app.get('/contacto', (req, res) =>{
-    res.render('index',  {
+    res.render('contacto',  {
         titulo: 'Contacto'
     })
 })
+
+app.post('/formulario', (req, res) =>{
+   console.log(req);
+   
+   const nombre = req.body.nombre;
+   const precio = req.body.precio;
+   const descripcion = req.body.descripcion;
+   
+   let datos = {
+    nombre: nombre,
+    precio: precio,
+    descripcion: descripcion
+   }
+
+   let sql = "INSERT INTO productos set ?";
+        conexion.query(sql, datos, function(err){
+            if (err) throw err;
+                console.log(`1 Registro insertado`);
+                res.render('enviado')
+        }) 
+
+        
+   //res.send(`Sus datos han sido recibidos: ${nombre} - ${precio} - ${descripcion}`)
+})
+
+app.post('/contacto', (req, res) =>{
+    console.log(req);
+    
+    const nombre = req.body.nombre;
+    const email = req.body.email;
+    
+    //creamos una funcion para enviar mail al cliente
+    async function envioMail(){
+        //configuramos la cuenta del envio
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            auth: {
+                user: process.env.EMAIL,
+                pass: process.env.EMAILPASSWORD
+            }
+        });
+        //envio mail
+        let info = await transporter.sendMail({
+            from: process.env.EMAIL,
+            to: `${email}`,
+            subject: "Gracias por suscribirte a nuestra App",
+            html:`Muchas gracias por visitar nuestra página <br>
+            Recibiras nuestras promociones a esta dirección de correo. <br>
+            Buen fin de semana!!`
+        })
+    }
+    
+    let datos = {
+     nombre: nombre,
+     email: email,
+     
+    }
+ 
+    let sql = "INSERT INTO contactos set ?";
+         conexion.query(sql, datos, function(err){
+             if (err) throw err;
+                 console.log(`1 Registro insertado`);
+                 envioMail().catch(console.error);
+                 res.render('enviado')
+         }) 
+ 
+         
+ })
 
 //servidor a la escucha de las peticiones
 app.listen(PORT, () =>{
