@@ -50,10 +50,18 @@ app.get('/formulario', (req, res) =>{
     res.render('formulario')
 })
 
+
 app.get('/productos', (req, res) =>{
-    res.render('productos',  {
-        titulo: 'Productos'
-    })
+
+    let sql = "SELECT * FROM productos";
+    conexion.query(sql, function(err, result){
+            if (err) throw err;
+                console.log(result);
+                res.render('productos',  {
+                    titulo: 'Productos',
+                    datos: result
+                })
+        })
 })
 
 app.get('/contacto', (req, res) =>{
